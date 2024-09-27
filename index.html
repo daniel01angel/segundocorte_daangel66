@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validación de Correos Electrónicos</title>
+</head>
+<body>
+    <form id="emailForm">
+        <label for="emails">Ingrese correos electrónicos separados por comas o punto y coma:</label><br><br>
+        <input type="text" id="emails" name="emails" style="width: 400px;"><br><br>
+        <button type="button" id="validateButton">Enviar</button>
+    </form>
+
+    <h3>Correos electrónicos inválidos:</h3>
+    <div id="invalidEmailsBox" style="border: 1px solid #ccc; padding: 10px; width: 400px; min-height: 50px;">
+        <!-- Aquí se mostrarán los correos inválidos -->
+    </div>
+
+    <script src="form.js"></script>
+</body>
+</html>

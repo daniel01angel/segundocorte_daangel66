@@ -1,3 +1,16 @@
+/* Variables de colores */
+:root {
+    --color-verde: #79c143;
+    --color-verde-oscuro: #5d9b35;
+    --color-naranja: #ff9900;
+    --color-gris-claro: #f2f2f2;
+    --color-gris: #ccc;
+    --color-gris-oscuro: #666;
+    --color-blanco: #fff;
+    --color-negro: #333;
+    --color-azul: blue;
+}
+
 /* Reset de estilos básicos */
 * {
     margin: 0;
@@ -12,23 +25,80 @@ body {
 
 /* Encabezado */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
+    background-color: var(--color-blanco);
+    padding: 20px 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Eliminamos el padding para evitar espacios laterales */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido del header */
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 0; /* Ajustamos a 0 para que esté totalmente a la izquierda */
+    padding-left: 20px; /* Agregamos padding interno si se desea un pequeño espacio */
+}
+
 .logo h1 {
-    color: #79c143;
-    font-size: 32px;
+    color: var(--color-verde);
+    font-size: 2rem;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background-color: var(--color-negro);
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    top: -8px;
+}
+
+.nav-toggle-label span::after {
+    top: 8px;
+}
+
+nav {
+    /* Eliminamos margin-left: auto para centrar el menú */
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
+    align-items: center;
+    justify-content: center; /* Centra el menú de navegación */
 }
 
 nav ul li {
@@ -37,15 +107,17 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--color-negro);
     font-weight: bold;
     padding: 5px 10px;
 }
 
 nav ul .dropdown {
     position: absolute;
+    top: 100%;
+    left: 0;
     display: none;
-    background-color: #fff;
+    background-color: var(--color-blanco);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     list-style: none;
     padding: 10px;
@@ -61,17 +133,16 @@ nav ul .dropdown li {
 
 nav ul .dropdown li a {
     padding: 5px 10px;
-    color: #333;
+    color: var(--color-negro);
 }
 
-/* Estilos para el Banner */
+/* Banner */
 .banner {
     background-color: #F5F5F5;
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: left;
 }
 
 .banner-content {
@@ -79,13 +150,13 @@ nav ul .dropdown li a {
 }
 
 .banner h1 {
-    color: #7EC850;
-    font-size: 48px;
+    color: var(--color-verde);
+    font-size: 3rem;
 }
 
 .banner p {
-    color: #ff9900;
-    font-size: 24px;
+    color: var(--color-naranja);
+    font-size: 1.5rem;
 }
 
 .banner .search-bar {
@@ -94,14 +165,14 @@ nav ul .dropdown li a {
 
 .banner .search-bar input {
     padding: 0.5rem;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    font-size: 1rem;
+    border: 1px solid var(--color-gris);
     border-radius: 4px;
 }
 
 .banner .search-bar button {
-    background-color: #7EC850;
-    color: white;
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 4px;
@@ -113,50 +184,21 @@ nav ul .dropdown li a {
     border-radius: 10px;
 }
 
-/* Media Query para resolución entre 300px y 500px */
-@media (max-width: 500px) and (min-width: 300px) {
-    .banner {
-        flex-direction: column-reverse; /* Los elementos se colocan en columna inversa */
-        align-items: center; /* Centra los elementos horizontalmente */
-    }
-
-    .banner-content {
-        max-width: 100%; /* Asegura que el contenido se ajuste a todo el ancho */
-        text-align: center; /* Centra el texto en pantallas pequeñas */
-    }
-
-    .banner h1 {
-        color: blue; /* Cambia el color del texto a azul */
-        font-size: 24px; /* Reduce el tamaño del texto */
-        margin-top: 1rem; /* Agrega un margen superior para separar la imagen */
-    }
-
-    .banner p {
-        font-size: 18px;
-    }
-
-    .banner-image img {
-        max-width: 80%; /* Ajusta el tamaño de la imagen en pantallas pequeñas */
-        margin-bottom: 1rem; /* Agrega un margen inferior para separar el texto */
-    }
-}
-
-/* Sección de Servicios */
+/* Servicios */
 .services {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 40px;
-    background-color: #f2f2f2;
+    padding: 2.5rem;
+    background-color: var(--color-gris-claro);
 }
 
 .service-item {
     text-align: center;
     width: 200px;
     height: 250px;
-    background-color: #fff;
-    padding: 20px;
-    box-sizing: border-box;
+    background-color: var(--color-blanco);
+    padding: 1.25rem;
     margin: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -164,29 +206,28 @@ nav ul .dropdown li a {
 
 .service-item img {
     width: 50px;
-    height: auto;
     margin-bottom: 15px;
 }
 
 .service-item h3 {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 10px;
 }
 
 .service-item p {
-    font-size: 14px;
-    color: #666;
+    font-size: 0.875rem;
+    color: var(--color-gris-oscuro);
 }
 
-/* Sección de Productos */
+/* Productos */
 .products {
-    padding: 40px;
+    padding: 2.5rem;
 }
 
 .products h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 36px;
+    font-size: 2.25rem;
 }
 
 .filters {
@@ -198,17 +239,18 @@ nav ul .dropdown li a {
 
 .filter-button {
     padding: 10px 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-gris);
     margin: 5px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--color-blanco);
     transition: background-color 0.3s;
     border-radius: 20px;
 }
 
-.filter-button.active, .filter-button:hover {
-    background-color: #79c143;
-    color: #fff;
+.filter-button.active,
+.filter-button:hover {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
 }
 
 .product-list {
@@ -217,32 +259,13 @@ nav ul .dropdown li a {
     gap: 20px;
 }
 
-/* Media Queries para ajustar el número de columnas en pantallas más pequeñas */
-@media (max-width: 1200px) {
-    .product-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 800px) {
-    .product-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .product-list {
-        grid-template-columns: 1fr;
-    }
-}
-
 .product-card {
-    border: 1px solid #ddd;
-    padding: 20px;
+    border: 1px solid var(--color-gris);
+    padding: 1.25rem;
     text-align: center;
     transition: box-shadow 0.3s;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: var(--color-blanco);
 }
 
 .product-card:hover {
@@ -258,19 +281,19 @@ nav ul .dropdown li a {
 }
 
 .product-card h3 {
-    font-size: 24px;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .product-card p {
-    font-size: 18px;
-    color: #666;
+    font-size: 1.125rem;
+    color: var(--color-gris-oscuro);
 }
 
 .add-to-cart {
     padding: 10px 20px;
-    background-color: #79c143;
-    color: #fff;
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -279,39 +302,149 @@ nav ul .dropdown li a {
 }
 
 .add-to-cart:hover {
-    background-color: #5d9b35;
+    background-color: var(--color-verde-oscuro);
 }
 
-/* Media Queries adicionales para responsividad */
+/* Media Queries */
+
+/* Ajustes para resoluciones más pequeñas */
+@media (max-width: 1200px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .banner h1 {
-        font-size: 36px;
+        font-size: 2.25rem;
     }
 
     .product-card h3 {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .product-card p {
-        font-size: 16px;
+        font-size: 1rem;
+    }
+}
+
+/* Menú responsivo y ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Mostrar menú toggle */
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        right: 20px;
+    }
+
+    /* Ocultar menú de navegación por defecto */
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--color-blanco);
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+    }
+
+    /* Estilos del menú desplegable */
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid var(--color-gris);
+    }
+
+    /* Dropdown dentro del menú desplegable */
+    nav ul .dropdown {
+        position: static;
+        display: none;
+        background-color: var(--color-gris-claro);
+        box-shadow: none;
+    }
+
+    nav ul li:hover .dropdown {
+        display: block;
+    }
+
+    nav ul .dropdown li a {
+        padding: 10px 15px;
+    }
+
+    /* Mostrar menú al activar el toggle */
+    .nav-toggle:checked + .nav-toggle-label + nav {
+        max-height: 500px; /* Ajustar según sea necesario */
+        transition: max-height 0.5s ease-in;
     }
 }
 
 @media (max-width: 500px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    /* Ajustes del encabezado */
+    .header-container {
+        justify-content: center; /* Centra el contenido del encabezado */
     }
 
+    .nav-toggle-label {
+        right: 20px;
+    }
+
+    /* Ajustes para el banner */
     .banner {
-        padding: 30px;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 1.875rem;
     }
 
+    .banner-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .banner h1 {
+        color: var(--color-azul);
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .banner p {
+        font-size: 1.125rem;
+    }
+
+    .banner-image img {
+        max-width: 80%;
+        margin-bottom: 1rem;
+    }
+
+    /* Servicios en una columna */
     .service-item {
         width: 100%;
         margin: 10px 0;
     }
 
+    /* Filtros centrados y verticales */
     .filters {
         flex-direction: column;
         align-items: center;
@@ -322,6 +455,7 @@ nav ul .dropdown li a {
         text-align: center;
     }
 
+    /* Productos en una columna */
     .product-list {
         grid-template-columns: 1fr;
     }

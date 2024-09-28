@@ -9,24 +9,38 @@
 <body>
     <!-- Encabezado -->
     <header>
-        <div class="logo">
-            <h1>Fruver</h1>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Fruver</h1>
+            </div>
+            <!-- Menú Toggle para móviles -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Menú de Navegación -->
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Páginas</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Carrito</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Comentarios</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contáctenos</a></li>
+                </ul>
+            </nav>
+            <!-- Íconos a la derecha -->
+            <div class="icons">
+                <a href="#"><img src="imagenes/search.png" alt="Buscar" class="icon"></a>
+                <a href="#"><img src="imagenes/shop.png" alt="Carrito de Compras" class="icon"></a>
+                <a href="#"><img src="imagenes/user.png" alt="Usuario" class="icon"></a>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Tienda</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Páginas</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Carrito</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Comentarios</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Contáctenos</a></li>
-            </ul>
-        </nav>
     </header>
 
     <!-- Banner principal -->
